@@ -806,72 +806,70 @@ delete_ports() {
     echo "1) 按规则编号"
     echo "2) 按端口"
     read -p "输入您的选择 (1 或 2): " choice
-}
 
-if [[ $choice -eq 1 ]]; then
-    # 根据规则编号删除
-    read -p "请输入要删除的规则编号（1, 2 等）: " rule_numbers
-
-    # 验证输入
-    if ! [[ $rule_numbers =~ ^([0-9]+)(,[0-9]+)*$ ]]; then
-        echo "错误: 输入无效。请输入以逗号分隔的规则编号。" >&2
-        exit 1
-    fi
-
-    # 将规则编号拆分成数组
-    IFS=',' read -ra RULE_NUMBERS <<<"$rule_numbers"
-    for rule_number in "${RULE_NUMBERS[@]}"; do
+    if [[ $choice -eq 1 ]]; then
         # 根据规则编号删除
-        ufw delete "$rule_number" || echo "删除规则编号 $rule_number 失败"
-    done
+        read -p "请输入要删除的规则编号（1, 2 等）: " rule_numbers
 
-    echo "已删除选定的规则。"
+        # 验证输入
+        if ! [[ $rule_numbers =~ ^([0-9]+)(,[0-9]+)*$ ]]; then
+            echo "错误: 输入无效。请输入以逗号分隔的规则编号。" >&2
+            exit 1
+        fi
 
-elif [[ $choice -eq 2 ]]; then
-    # 根据端口删除
-    read -p "请输入要删除的端口（例如 80,443,2053 或范围 400-500）: " ports
+        # 将规则编号拆分成数组
+        IFS=',' read -ra RULE_NUMBERS <<<"$rule_numbers"
+        for rule_number in "${RULE_NUMBERS[@]}"; do
+            # 根据规则编号删除
+            ufw delete "$rule_number" || echo "删除规则编号 $rule_number 失败"
+        done
 
-    # 验证输入
-    if ! [[ $ports =~ ^([0-9]+|[0-9]+-[0-9]+)(,([0-9]+|[0-9]+-[0-9]+))*$ ]]; then
-        echo "错误: 输入无效。请输入以逗号分隔的端口或端口范围（例如 80,443,2053 或 400-500）。" >&2
+        echo "已删除选定的规则。"
+
+    elif [[ $choice -eq 2 ]]; then
+        # 根据端口删除
+        read -p "请输入要删除的端口（例如 80,443,2053 或范围 400-500）: " ports
+
+        # 验证输入
+        if ! [[ $ports =~ ^([0-9]+|[0-9]+-[0-9]+)(,([0-9]+|[0-9]+-[0-9]+))*$ ]]; then
+            echo "错误: 输入无效。请输入以逗号分隔的端口或端口范围（例如 80,443,2053 或 400-500）。" >&2
+            exit 1
+        fi
+
+        # 将端口拆分成数组
+        IFS=',' read -ra PORT_LIST <<<"$ports"
+        for port in "${PORT_LIST[@]}"; do
+            if [[ $port == *-* ]]; then
+                # 拆分端口范围
+                start_port=$(echo $port | cut -d'-' -f1)
+                end_port=$(echo $port | cut -d'-' -f2)
+                # 删除端口范围
+                ufw delete allow $start_port:$end_port/tcp
+                ufw delete allow $start_port:$end_port/udp
+            else
+                # 删除单个端口
+                ufw delete allow "$port"
+            fi
+        done
+
+        # 删除确认
+        echo "已删除指定的端口："
+        for port in "${PORT_LIST[@]}"; do
+            if [[ $port == *-* ]]; then
+                start_port=$(echo $port | cut -d'-' -f1)
+                end_port=$(echo $port | cut -d'-' -f2)
+                # 检查端口范围是否已删除
+                (ufw status | grep -q "$start_port:$end_port") || echo "$start_port-$end_port"
+            else
+                # 检查单个端口是否已删除
+                (ufw status | grep -q "$port") || echo "$port"
+            fi
+        done
+    else
+        echo "${red}错误:${plain} 无效的选择。请输入 1 或 2。" >&2
         exit 1
     fi
-
-    # 将端口拆分成数组
-    IFS=',' read -ra PORT_LIST <<<"$ports"
-    for port in "${PORT_LIST[@]}"; do
-        if [[ $port == *-* ]]; then
-            # 拆分端口范围
-            start_port=$(echo $port | cut -d'-' -f1)
-            end_port=$(echo $port | cut -d'-' -f2)
-            # 删除端口范围
-            ufw delete allow $start_port:$end_port/tcp
-            ufw delete allow $start_port:$end_port/udp
-        else
-            # 删除单个端口
-            ufw delete allow "$port"
-        fi
-    done
-
-    # 删除确认
-    echo "已删除指定的端口："
-    for port in "${PORT_LIST[@]}"; do
-        if [[ $port == *-* ]]; then
-            start_port=$(echo $port | cut -d'-' -f1)
-            end_port=$(echo $port | cut -d'-' -f2)
-            # 检查端口范围是否已删除
-            (ufw status | grep -q "$start_port:$end_port") || echo "$start_port-$end_port"
-        else
-            # 检查单个端口是否已删除
-            (ufw status | grep -q "$port") || echo "$port"
-        fi
-    done
-else
-    echo "${red}错误:${plain} 无效的选择。请输入 1 或 2。" >&2
-    exit 1
-fi
 }
-
 
 update_geo() {
     echo -e "${green}\t1.${plain} Loyalsoldier (geoip.dat, geosite.dat)"
