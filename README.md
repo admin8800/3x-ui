@@ -25,7 +25,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/admin8800/3x-ui/master/install
 ```
 
 
-## 国内网络环境使用Docker加速部署
+### 国内网络环境使用Docker加速部署
 1. 国内安装docker
 ```
 bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/DockerInstallation.sh)
