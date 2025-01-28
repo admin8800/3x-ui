@@ -26,6 +26,9 @@ bash <(curl -Ls https://raw.githubusercontent.com/admin8800/3x-ui/master/install
 
 
 ### 国内网络环境使用Docker加速部署
+<details>
+  <summary>点击查看国内部署</summary>
+
 1. 国内安装docker
 ```
 bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/DockerInstallation.sh)
@@ -42,7 +45,7 @@ docker run -itd \
    --name 3x-ui \
    ghcr.nju.edu.cn/admin8800/3x-ui
 ```
-
+</details>
 
 ### SSL证书
 
