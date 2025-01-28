@@ -506,7 +506,8 @@ XUI_BIN_FOLDER="bin" XUI_DB_FOLDER="/etc/x-ui" go build main.go
 
 ## 特别感谢
 
-- [alireza0](https://github.com/alireza0/)
+- [alireza0](https://github.com/alireza0)
+- [MHSanaei](https://github.com/MHSanaei)
 
 ## 致谢
 
