@@ -174,7 +174,7 @@ config_after_install() {
             echo -e "${green}用户名: ${config_username}${plain}"
             echo -e "${green}密码: ${config_password}${plain}"
             echo -e "${green}端口: ${config_port}${plain}"
-            echo -e "${green}WebBasePath: ${config_webBasePath}${plain}"
+            echo -e "${green}面板路径: ${config_webBasePath}${plain}"
             echo -e "${green}访问地址: http://${server_ip}:${config_port}/${config_webBasePath}${plain}"
             echo -e "###############################################"
             echo -e "${yellow}如果忘记登录信息，可以输入 'x-ui settings' 来查看${plain}"
@@ -269,22 +269,22 @@ install_x-ui() {
     echo -e "${green}x-ui ${tag_version}${plain} 安装完成，正在运行中..."
     echo -e ""
     echo -e "┌───────────────────────────────────────────────────────┐
-│  ${blue}x-ui 控制菜单使用（子命令）：${plain}                        │
-│                                                                    │
-│  ${blue}x-ui${plain}              - 管理员管理脚本                  │
-│  ${blue}x-ui start${plain}        - 启动                           │
-│  ${blue}x-ui stop${plain}         - 停止                           │
-│  ${blue}x-ui restart${plain}      - 重启                           │
-│  ${blue}x-ui status${plain}       - 当前状态                        │
-│  ${blue}x-ui settings${plain}     - 当前设置                        │
-│  ${blue}x-ui enable${plain}       - 设置为开机自启                  │
-│  ${blue}x-ui disable${plain}      - 禁用开机自启                    │
-│  ${blue}x-ui log${plain}          - 查看日志                        │
-│  ${blue}x-ui banlog${plain}       - 查看 Fail2ban 被禁日志          │
-│  ${blue}x-ui update${plain}       - 更新                           │
-│  ${blue}x-ui legacy${plain}       - 旧版本                         │
-│  ${blue}x-ui install${plain}      - 安装                           │
-│  ${blue}x-ui uninstall${plain}    - 卸载                           │
+│  ${blue}x-ui 控制菜单使用（子命令）：${plain}
+│                                                             
+│  ${blue}x-ui${plain}              - 管理员管理脚本
+│  ${blue}x-ui start${plain}        - 启动
+│  ${blue}x-ui stop${plain}         - 停止
+│  ${blue}x-ui restart${plain}      - 重启
+│  ${blue}x-ui status${plain}       - 当前状态 
+│  ${blue}x-ui settings${plain}     - 当前设置
+│  ${blue}x-ui enable${plain}       - 设置为开机自启
+│  ${blue}x-ui disable${plain}      - 禁用开机自启
+│  ${blue}x-ui log${plain}          - 查看日志
+│  ${blue}x-ui banlog${plain}       - 查看 Fail2ban 被禁日志
+│  ${blue}x-ui update${plain}       - 更新
+│  ${blue}x-ui legacy${plain}       - 旧版本
+│  ${blue}x-ui install${plain}      - 安装
+│  ${blue}x-ui uninstall${plain}    - 卸载
 └────────────────────────────────────────────────────────────────────┘"
 }
 
