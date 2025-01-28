@@ -6,7 +6,7 @@
   </picture>
 </p>
 
-**一个更好的面板 • 基于Xray Core构建**
+## 一个更好的面板 • 基于Xray Core构建 • 中文优化版更适合中文体质的宝宝
 
 [![](https://img.shields.io/github/v/release/admin8800/3x-ui.svg)](https://github.com/admin8800/3x-ui/releases)
 [![](https://img.shields.io/github/actions/workflow/status/admin8800/3x-ui/release.yml.svg)](#)
