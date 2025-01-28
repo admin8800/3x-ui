@@ -1,4 +1,3 @@
-[English](/README.md) | [中文](/README.zh_CN.md) | [Español](/README.es_ES.md) | [Русский](/README.ru_RU.md)
 
 <p align="center">
   <picture>
@@ -19,28 +18,10 @@
 
 **如果此项目对你有用，请给一个**:star2:
 
-<p align="left">
-  <a href="https://buymeacoffee.com/admin8800" target="_blank">
-    <img src="./media/buymeacoffe.png" alt="Image">
-  </a>
-</p>
-
-- USDT (TRC20): `TXncxkvhkDWGts487Pjqq1qT9JmwRUz8CC`
-- MATIC (polygon): `0x41C9548675D044c6Bfb425786C765bc37427256A`
-- LTC (Litecoin): `ltc1q2ach7x6d2zq0n4l0t4zl7d7xe2s6fs7a3vspwv`
-
 ## 安装 & 升级
 
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/admin8800/3x-ui/master/install.sh)
-```
-
-## 安装旧版本 (我们不建议)
-
-要安装您想要的版本，请使用以下安装命令。例如，ver `v1.7.9`:
-
-```
-VERSION=v1.7.9 && <(curl -Ls "https://raw.githubusercontent.com/admin8800/3x-ui/$VERSION/install.sh") $VERSION
 ```
 
 ### SSL证书
@@ -101,41 +82,15 @@ certbot renew --dry-run
 
 #### 使用
 
-1. 若要将最新版本的压缩包直接下载到服务器，请运行以下命令：
+下载压缩包([下载地址](https://github.com/admin/3x-ui/releases)) 到本地，下载对应系统架构的，一般`amd64`的即可。
 
-```sh
-ARCH=$(uname -m)
-case "${ARCH}" in
-  x86_64 | x64 | amd64) XUI_ARCH="amd64" ;;
-  i*86 | x86) XUI_ARCH="386" ;;
-  armv8* | armv8 | arm64 | aarch64) XUI_ARCH="arm64" ;;
-  armv7* | armv7) XUI_ARCH="armv7" ;;
-  armv6* | armv6) XUI_ARCH="armv6" ;;
-  armv5* | armv5) XUI_ARCH="armv5" ;;
-  *) XUI_ARCH="amd64" ;;
-esac
+将压缩包上传到服务器的root目录
 
-
-wget https://github.com/admin8800/3x-ui/releases/latest/download/x-ui-linux-${XUI_ARCH}.tar.gz
+然后依次执行以下命令，一行一个命令
 ```
-
-2. 下载压缩包后，执行以下命令安装或升级 x-ui：
-
-```sh
-ARCH=$(uname -m)
-case "${ARCH}" in
-  x86_64 | x64 | amd64) XUI_ARCH="amd64" ;;
-  i*86 | x86) XUI_ARCH="386" ;;
-  armv8* | armv8 | arm64 | aarch64) XUI_ARCH="arm64" ;;
-  armv7* | armv7) XUI_ARCH="armv7" ;;
-  armv6* | armv6) XUI_ARCH="armv6" ;;
-  armv5* | armv5) XUI_ARCH="armv5" ;;
-  *) XUI_ARCH="amd64" ;;
-esac
-
-cd /root/
-rm -rf x-ui/ /usr/local/x-ui/ /usr/bin/x-ui
-tar zxvf x-ui-linux-${XUI_ARCH}.tar.gz
+cd /root
+rm x-ui/ /usr/local/x-ui/ /usr/bin/x-ui -rf
+tar zxvf x-ui-linux-amd64.tar.gz
 chmod +x x-ui/x-ui x-ui/bin/xray-linux-* x-ui/x-ui.sh
 cp x-ui/x-ui.sh /usr/bin/x-ui
 cp -f x-ui/x-ui.service /etc/systemd/system/
@@ -143,6 +98,7 @@ mv x-ui/ /usr/local/
 systemctl daemon-reload
 systemctl enable x-ui
 systemctl restart x-ui
+x-ui
 ```
 
 </details>
@@ -160,39 +116,16 @@ systemctl restart x-ui
    bash <(curl -sSL https://get.docker.com)
    ```
 
-2. 克隆仓库：
-
-   ```sh
-   git clone https://github.com/admin8800/3x-ui.git
-   cd 3x-ui
-   ```
-
-3. 运行服务：
-
-   ```sh
-   docker compose up -d
-   ```
-
-   或
-
+2. 运行服务：
    ```sh
    docker run -itd \
       -e XRAY_VMESS_AEAD_FORCED=false \
       -v $PWD/db/:/etc/x-ui/ \
       -v $PWD/cert/:/root/cert/ \
       --network=host \
-      --restart=unless-stopped \
+      --restart=always \
       --name 3x-ui \
       ghcr.io/admin8800/3x-ui:latest
-   ```
-
-更新至最新版本
-
-   ```sh
-    cd 3x-ui
-    docker compose down
-    docker compose pull 3x-ui
-    docker compose up -d
    ```
 
 从Docker中删除3x-ui
@@ -200,8 +133,6 @@ systemctl restart x-ui
    ```sh
     docker stop 3x-ui
     docker rm 3x-ui
-    cd --
-    rm -r 3x-ui
    ```
 
 </details>
