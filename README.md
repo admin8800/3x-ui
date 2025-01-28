@@ -18,7 +18,7 @@
 
 **如果此项目对你有用，请给一个**:star2:
 
-## `安装`或`升级`一键脚本
+## `安装`&`升级`一键脚本
 
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/admin8800/3x-ui/master/install.sh)
