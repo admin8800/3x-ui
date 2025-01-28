@@ -1,11 +1,8 @@
----
-version: "3"
-
 services:
   3x-ui:
-    image: ghcr.io/mhsanaei/3x-ui:latest
+    image: ghcr.io/admin8800/3x-ui:latest
     container_name: 3x-ui
-    hostname: yourhostname
+    hostname: hostname
     volumes:
       - $PWD/db/:/etc/x-ui/
       - $PWD/cert/:/root/cert/
@@ -14,4 +11,4 @@ services:
       X_UI_ENABLE_FAIL2BAN: "true"
     tty: true
     network_mode: host
-    restart: unless-stopped
+    restart: always
