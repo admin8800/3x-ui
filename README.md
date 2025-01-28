@@ -24,6 +24,26 @@
 bash <(curl -Ls https://raw.githubusercontent.com/admin8800/3x-ui/master/install.sh)
 ```
 
+
+## 国内网络环境使用Docker加速部署
+1. 国内安装docker
+```
+bash <(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/DockerInstallation.sh)
+```
+
+2. 运行3x-ui镜像
+```
+docker run -itd \
+   -e XRAY_VMESS_AEAD_FORCED=false \
+   -v $PWD/db/:/etc/x-ui/ \
+   -v $PWD/cert/:/root/cert/ \
+   --network=host \
+   --restart=always \
+   --name 3x-ui \
+   ghcr.nju.edu.cn/admin8800/3x-ui
+```
+
+
 ### SSL证书
 
 <details>
@@ -125,7 +145,7 @@ x-ui
       --network=host \
       --restart=always \
       --name 3x-ui \
-      ghcr.io/admin8800/3x-ui:latest
+      ghcr.io/admin8800/3x-ui
    ```
 
 从Docker中删除3x-ui
