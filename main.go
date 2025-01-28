@@ -128,45 +128,46 @@ func showSetting(show bool) {
 		settingService := service.SettingService{}
 		port, err := settingService.GetPort()
 		if err != nil {
-			fmt.Println("get current port failed, error info:", err)
+			fmt.Println("获取当前端口失败，错误信息:", err)
 		}
 
 		webBasePath, err := settingService.GetBasePath()
 		if err != nil {
-			fmt.Println("get webBasePath failed, error info:", err)
+			fmt.Println("获取 webBasePath 失败，错误信息:", err)
 		}
 
 		certFile, err := settingService.GetCertFile()
 		if err != nil {
-			fmt.Println("get cert file failed, error info:", err)
+			fmt.Println("获取证书文件失败，错误信息:", err)
 		}
 		keyFile, err := settingService.GetKeyFile()
 		if err != nil {
-			fmt.Println("get key file failed, error info:", err)
+			fmt.Println("获取密钥文件失败，错误信息:", err)
 		}
 
 		userService := service.UserService{}
 		userModel, err := userService.GetFirstUser()
 		if err != nil {
-			fmt.Println("get current user info failed, error info:", err)
+			fmt.Println("获取当前用户信息失败，错误信息:", err)
 		}
 
 		username := userModel.Username
 		userpasswd := userModel.Password
 		if username == "" || userpasswd == "" {
-			fmt.Println("current username or password is empty")
+			fmt.Println("当前用户名或密码为空")
 		}
 
-		fmt.Println("current panel settings as follows:")
+		fmt.Println("当前面板配置如下:")
 		if certFile == "" || keyFile == "" {
-			fmt.Println("Warning: Panel is not secure with SSL")
+			fmt.Println("警告: 面板未启用 SSL，访问不安全")
 		} else {
-			fmt.Println("Panel is secure with SSL")
+			fmt.Println("面板已启用 SSL，访问安全")
 		}
-		fmt.Println("username:", username)
-		fmt.Println("password:", userpasswd)
-		fmt.Println("port:", port)
-		fmt.Println("webBasePath:", webBasePath)
+		
+		fmt.Println("用户名:", username)
+		fmt.Println("密码:", userpasswd)
+		fmt.Println("端口:", port)
+		fmt.Println("面板路径:", webBasePath)
 	}
 }
 
