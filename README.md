@@ -21,7 +21,7 @@
 ## `安装`&`升级`一键脚本
 
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/admin8800/3x-ui/master/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/admin8800/3x-ui/main/install.sh)
 ```
 
 
@@ -105,7 +105,7 @@ certbot renew --dry-run
 
 #### 使用
 
-下载压缩包([下载地址](https://github.com/admin/3x-ui/releases)) 到本地，下载对应系统架构的，一般`amd64`的即可。
+下载压缩包([下载地址](https://github.com/admin/3x-ui/releases)) 到本地，下载对应系统架构的，以常见的`amd64`为例：
 
 将压缩包上传到服务器的root目录
 
@@ -333,11 +333,6 @@ WARP 已内置，无需额外安装。只需在面板中开启相关配置即可
 
 **注意:** 当使用 IP 隧道时，IP 限制将无法正常工作。
 
-- **对于 `v1.6.1` 及之前的版本：**
-  - IP 限制功能已内置于面板中。
-
-**对于 `v1.7.0` 及更新的版本：**
-
 要启用 IP 限制功能，您需要安装 `fail2ban` 及其所需的文件，步骤如下：
 
 1. 在终端中运行 `x-ui` 命令，然后选择 `IP 限制管理`。
@@ -351,20 +346,6 @@ WARP 已内置，无需额外安装。只需在面板中开启相关配置即可
    - **卸载 Fail2ban:** 卸载带有配置的 Fail2ban。
 
 3. 在面板中通过设置 `Xray 配置/log/访问日志` 为 `./access.log` 添加访问日志路径，然后保存并重启 Xray。
-
-- **对于 `v2.1.3` 之前的版本：**
-  - 您需要在 Xray 配置中手动设置访问日志路径：
-
-    ```sh
-    "log": {
-      "access": "./access.log",
-      "dnsLog": false,
-      "loglevel": "warning"
-    },
-    ```
-
-- **对于 `v2.1.3` 及之后的版本：**
-  - 面板中直接提供了配置 `access.log` 的选项。
 
 </details>
 
