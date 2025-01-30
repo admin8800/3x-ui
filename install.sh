@@ -199,7 +199,7 @@ config_after_install() {
             echo -e "###############################################"
             echo -e "${yellow}如果忘记登录信息，可以输入 'x-ui settings' 来查看${plain}"
         else
-            echo -e "${green}用户名、密码和WebBasePath已正确设置。退出...${plain}"
+            echo -e "${green}用户名、密码和面板路径已正确设置。退出...${plain}"
         fi
     fi
 
@@ -212,7 +212,7 @@ install_x-ui() {
     if [ $# == 0 ]; then
         tag_version=$(curl -Ls "https://api.github.com/repos/admin8800/3x-ui/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
         if [[ ! -n "$tag_version" ]]; then
-            echo -e "${red}获取x-ui版本失败，可能是由于GitHub API限制，请稍后再试${plain}"
+            echo -e "${red}获取x-ui版本失败，可能是你的网络无法访问GitHub API，请查看文档${plain}"
             exit 1
         fi
         echo -e "获取到x-ui最新版本: ${tag_version}, 开始安装..."
