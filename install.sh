@@ -147,10 +147,10 @@ gen_random_string() {
 }
 
 config_after_install() {
-    local existing_username=$(/usr/local/x-ui/x-ui setting -show true | grep -Eo 'username: .+' | awk '{print $2}')
-    local existing_password=$(/usr/local/x-ui/x-ui setting -show true | grep -Eo 'password: .+' | awk '{print $2}')
-    local existing_webBasePath=$(/usr/local/x-ui/x-ui setting -show true | grep -Eo 'webBasePath: .+' | awk '{print $2}')
-    local existing_port=$(/usr/local/x-ui/x-ui setting -show true | grep -Eo 'port: .+' | awk '{print $2}')
+    local existing_username=$(/usr/local/x-ui/x-ui setting -show true | grep -Eo '用户名: .+' | awk '{print $2}')
+    local existing_password=$(/usr/local/x-ui/x-ui setting -show true | grep -Eo '密码: .+' | awk '{print $2}')
+    local existing_webBasePath=$(/usr/local/x-ui/x-ui setting -show true | grep -Eo '面板路径: .+' | awk '{print $2}')
+    local existing_port=$(/usr/local/x-ui/x-ui setting -show true | grep -Eo '端口: .+' | awk '{print $2}')
     local server_ip=$(curl -s https://api.ipify.org)
 
     if [[ ${#existing_webBasePath} -lt 4 ]]; then
