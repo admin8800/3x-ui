@@ -64,6 +64,9 @@ docker run -itd \
    --name 3x-ui \
    ghcr.nju.edu.cn/admin8800/3x-ui
 ```
+
+然后使用默认信息访问面板
+
 </details>
 
 ### SSL证书
@@ -143,6 +146,8 @@ systemctl restart x-ui
 x-ui
 ```
 
+然后使用默认信息访问面板
+
 </details>
 
 ## 通过Docker安装
@@ -169,6 +174,7 @@ x-ui
       --name 3x-ui \
       ghcr.io/admin8800/3x-ui
    ```
+然后使用默认信息访问面板
 
 从Docker中删除3x-ui
 
@@ -257,7 +263,7 @@ location /sub {
 
 - English（英语）  
 - Persian（波斯语）  
-- Traditional Chinese（繁体中文）  
+- Traditional Chinese（繁体中文）默认语言
 - Simplified Chinese（简体中文）  
 - Japanese（日语）  
 - Russian（俄语）  
@@ -292,14 +298,14 @@ location /sub {
 <details>
   <summary>点击查看默认设置详情</summary>
 
-### 用户名、密码、端口和 Web Base Path
+### 用户名、密码、端口和路径
 
-如果您选择不修改这些设置，它们将随机生成（不适用于 Docker）。
+如果您选择不修改这些设置，它们将随机生成（Docker部署不会生成路径）。
 
 **Docker 的默认设置：**
-- **用户名：** admin
-- **密码：** admin
-- **端口：** 2053
+- **用户名：** `admin`
+- **密码：** `admin`
+- **端口：** `2053`
 
 ### 数据库管理：
 
