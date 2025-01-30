@@ -25,9 +25,28 @@ bash <(curl -Ls https://raw.githubusercontent.com/admin8800/3x-ui/main/install.s
 ```
 
 
-### 国内网络环境使用Docker加速部署
+### 纯IPV6网络部署 
 <details>
-  <summary>点击查看国内部署</summary>
+  <summary>点击查看纯IPV6网络部署</summary>
+
+纯IPV6网络无法访问`api.github.com`，请配置dns64服务临时增加IPV4站点访问能力。
+
+命令：
+```
+sudo tee /etc/resolv.conf <<EOF
+nameserver 2a00:1098:2b::1
+nameserver 2a00:1098:2c::1
+nameserver 2a01:4f9:c010:3f02::1
+nameserver 2a01:4f8:c2c:123f::1
+EOF
+```
+
+</details>
+
+
+### 国内网络环境部署
+<details>
+  <summary>点击查看国内部署方案</summary>
 
 1. 国内安装docker
 ```
