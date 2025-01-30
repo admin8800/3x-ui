@@ -30,7 +30,7 @@ elif [[ -f /usr/lib/os-release ]]; then
     source /usr/lib/os-release
     release=$ID
 else
-    echo "无法检测操作系统，请联系作者！" >&2
+    echo "无法检测操作系统，请谷歌搜索排查！" >&2
     exit 1
 fi
 
@@ -194,7 +194,7 @@ update_menu() {
 }
 
 legacy_version() {
-    echo "请输入面板版本（如2.4.0）："
+    echo "请输入面板版本（如2.5.0）："
     read tag_version
 
     if [ -z "$tag_version" ]; then
@@ -308,8 +308,8 @@ check_config() {
     fi
     LOGI "${info}"
 
-    local existing_webBasePath=$(echo "$info" | grep -Eo 'webBasePath: .+' | awk '{print $2}')
-    local existing_port=$(echo "$info" | grep -Eo 'port: .+' | awk '{print $2}')
+    local existing_webBasePath=$(echo "$info" | grep -Eo '面板路径: .+' | awk '{print $2}')
+    local existing_port=$(echo "$info" | grep -Eo '端口: .+' | awk '{print $2}')
     local existing_cert=$(/usr/local/x-ui/x-ui setting -getCert true | grep -Eo 'cert: .+' | awk '{print $2}')
     local server_ip=$(curl -s https://api.ipify.org)
 
@@ -1046,8 +1046,8 @@ ssl_cert_issue_main() {
 }
 
 ssl_cert_issue() {
-    local existing_webBasePath=$(/usr/local/x-ui/x-ui setting -show true | grep -Eo 'webBasePath: .+' | awk '{print $2}')
-    local existing_port=$(/usr/local/x-ui/x-ui setting -show true | grep -Eo 'port: .+' | awk '{print $2}')
+    local existing_webBasePath=$(/usr/local/x-ui/x-ui setting -show true | grep -Eo '面板路径: .+' | awk '{print $2}')
+    local existing_port=$(/usr/local/x-ui/x-ui setting -show true | grep -Eo '端口: .+' | awk '{print $2}')
     # 首先检查 acme.sh 是否存在
     if ! command -v ~/.acme.sh/acme.sh &>/dev/null; then
         echo "未找到 acme.sh，我们将安装它"
@@ -1177,8 +1177,8 @@ ssl_cert_issue() {
 }
 
 ssl_cert_issue_CF() {
-    local existing_webBasePath=$(/usr/local/x-ui/x-ui setting -show true | grep -Eo 'webBasePath: .+' | awk '{print $2}')
-    local existing_port=$(/usr/local/x-ui/x-ui setting -show true | grep -Eo 'port: .+' | awk '{print $2}')
+    local existing_webBasePath=$(/usr/local/x-ui/x-ui setting -show true | grep -Eo '面板路径: .+' | awk '{print $2}')
+    local existing_port=$(/usr/local/x-ui/x-ui setting -show true | grep -Eo '端口: .+' | awk '{print $2}')
     LOGI "****** 使用说明 ******"
     LOGI "请按照以下步骤完成操作："
     LOGI "1. Cloudflare 注册邮箱。"
@@ -1642,8 +1642,8 @@ remove_iplimit() {
 
 SSH_port_forwarding() {
     local server_ip=$(curl -s https://api.ipify.org)
-    local existing_webBasePath=$(/usr/local/x-ui/x-ui setting -show true | grep -Eo 'webBasePath: .+' | awk '{print $2}')
-    local existing_port=$(/usr/local/x-ui/x-ui setting -show true | grep -Eo 'port: .+' | awk '{print $2}')
+    local existing_webBasePath=$(/usr/local/x-ui/x-ui setting -show true | grep -Eo '面板路径: .+' | awk '{print $2}')
+    local existing_port=$(/usr/local/x-ui/x-ui setting -show true | grep -Eo '端口: .+' | awk '{print $2}')
     local existing_listenIP=$(/usr/local/x-ui/x-ui setting -getListen true | grep -Eo 'listenIP: .+' | awk '{print $2}')
     local existing_cert=$(/usr/local/x-ui/x-ui setting -getCert true | grep -Eo 'cert: .+' | awk '{print $2}')
     local existing_key=$(/usr/local/x-ui/x-ui setting -getCert true | grep -Eo 'key: .+' | awk '{print $2}')
