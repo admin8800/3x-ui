@@ -29,7 +29,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/admin8800/3x-ui/main/install.s
 <details>
   <summary>点击查看纯IPV6网络部署</summary>
 
-纯IPV6网络无法访问`api.github.com`，请配置dns64服务临时增加IPV4站点访问能力。
+纯IPV6网络无法访问`api.github.com`，可以配置dns64服务临时增加IPV4站点访问能力。
 
 命令：
 ```
