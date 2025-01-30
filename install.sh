@@ -178,7 +178,7 @@ config_after_install() {
             echo -e "${green}访问地址：http://${server_ip}:${config_port}/${config_webBasePath}${plain}"
             echo -e "###############################################"
             echo -e "${yellow}如果您忘记了登录信息，可以输入 'x-ui settings' 查看${plain}"
-            else
+        fi
     else
         if [[ "$existing_username" == "admin" && "$existing_password" == "admin" ]]; then
             local config_username=$(gen_random_string 10)
