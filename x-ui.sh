@@ -233,7 +233,7 @@ uninstall() {
     echo ""
     echo -e "卸载成功。\n"
     echo "如果您需要重新安装此面板，可以使用以下命令："
-    echo -e "${green}bash <(curl -Ls https://raw.githubusercontent.com/admin8800/3x-ui/master/install.sh)${plain}"
+    echo -e "${green}bash <(curl -Ls https://raw.githubusercontent.com/admin8800/3x-ui/main/install.sh)${plain}"
     echo ""
     # 捕获 SIGTERM 信号
     trap delete_script SIGTERM
@@ -268,9 +268,9 @@ gen_random_string() {
 }
 
 reset_webbasepath() {
-    echo -e "${yellow}正在重置 Web 基路径${plain}"
+    echo -e "${yellow}正在重置 Web 路径${plain}"
 
-    read -rp "您确定要重置 Web 基路径吗？ (y/n): " confirm
+    read -rp "您确定要重置 Web 路径吗？ (y/n): " confirm
     if [[ $confirm != "y" && $confirm != "Y" ]]; then
         echo -e "${yellow}操作已取消。${plain}"
         return
@@ -278,11 +278,11 @@ reset_webbasepath() {
 
 config_webBasePath=$(gen_random_string 10)
 
-# 应用新的 Web 基路径设置
+# 应用新的 Web 路径设置
 /usr/local/x-ui/x-ui setting -webBasePath "${config_webBasePath}" >/dev/null 2>&1
 
-echo -e "Web 基路径已重置为: ${green}${config_webBasePath}${plain}"
-echo -e "${green}请使用新的 Web 基路径访问面板。${plain}"
+echo -e "Web 路径已重置为: ${green}${config_webBasePath}${plain}"
+echo -e "${green}请使用新的 Web 路径访问面板。${plain}"
 restart
 }
 

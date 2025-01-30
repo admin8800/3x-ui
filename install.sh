@@ -175,15 +175,13 @@ config_after_install() {
             echo -e "${green}密码: ${config_password}${plain}"
             echo -e "${green}端口: ${config_port}${plain}"
             echo -e "${green}面板路径: ${config_webBasePath}${plain}"
-            echo -e "${green}访问地址: http://${server_ip}:${config_port}/${config_webBasePath}${plain}"
             echo -e "###############################################"
             echo -e "${yellow}如果忘记登录信息，可以输入 'x-ui settings' 来查看${plain}"
         else
             local config_webBasePath=$(gen_random_string 15)
-            echo -e "${yellow}WebBasePath缺失或太短，正在生成新的...${plain}"
+            echo -e "${yellow}路径缺失或太短，正在生成新的...${plain}"
             /usr/local/x-ui/x-ui setting -webBasePath "${config_webBasePath}"
-            echo -e "${green}新的 WebBasePath: ${config_webBasePath}${plain}"
-            echo -e "${green}访问地址: http://${server_ip}:${existing_port}/${config_webBasePath}${plain}"
+            echo -e "${green}新的路径: ${config_webBasePath}${plain}"
         fi
     else
         if [[ "$existing_username" == "admin" && "$existing_password" == "admin" ]]; then
