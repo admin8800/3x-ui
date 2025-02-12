@@ -43,6 +43,6 @@ download_xray:
 	mkdir -p build/x-ui/SSL
 	wget -q $(OPENSSL_URL) -O build/x-ui/SSL/Win64OpenSSL_Light-3_3_0.exe
 
-# 打包整个 x-ui 文件夹为 zip 文件
+# 打包最终产物为 zip 文件
 package:
 	cd build && zip -r x-ui-windows-amd64.zip x-ui
