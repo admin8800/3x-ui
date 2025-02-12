@@ -1,4 +1,4 @@
-name: Build x-ui and upload artifacts
+name: Build-x-ui-windows
 
 on:
   workflow_dispatch:  # 允许手动触发工作流
