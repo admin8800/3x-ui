@@ -1,4 +1,4 @@
-name: Build-x-ui-windows
+name: Build-windows
 
 on:
   workflow_dispatch:
