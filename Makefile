@@ -1,4 +1,4 @@
-# 请先安装go环境和apt install mingw-w64
+# 要使用此构建脚本请安装go环境和make和mingw-w64
 
 GO_FILES := $(shell find . -type f -name '*.go')
 
