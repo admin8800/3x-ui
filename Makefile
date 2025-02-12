@@ -1,4 +1,4 @@
-# 要使用此构建脚本请安装go环境和make和mingw-w64
+# windows版本构建脚本，要使用此构建请安装go环境和make和mingw-w64
 
 GO_FILES := $(shell find . -type f -name '*.go')
 
