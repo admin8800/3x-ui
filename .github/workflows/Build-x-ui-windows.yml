@@ -30,4 +30,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: x-ui-build
-          path: build/x-ui/x-ui-windows-amd64.zip
+          path: build/x-ui-windows-amd64.zip
