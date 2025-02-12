@@ -22,7 +22,7 @@ build:
 	mkdir -p build/x-ui
 	GOOS=windows GOARCH=amd64 CGO_ENABLED=1 CC=x86_64-w64-mingw32-gcc go build -ldflags "-w -s" -o build/x-ui/x-ui.exe .
 
-# download_xray 目标：下载 Xray 的 Windows 版本及相关依赖
+# download_xray 目标：下载 Xray 内核的 Windows 版本及相关依赖
 download_xray:
 	mkdir -p build/x-ui/bin
 	wget -q $(XRAY_URL)/Xray-windows-64.zip -O build/x-ui/bin/Xray-windows-64.zip
@@ -40,7 +40,6 @@ download_xray:
 	wget -q -O build/x-ui/bin/geosite_IR.dat https://github.com/chocolate4u/Iran-v2ray-rules/releases/latest/download/geosite.dat
 	wget -q -O build/x-ui/bin/geoip_RU.dat https://github.com/runetfreedom/russia-v2ray-rules-dat/releases/latest/download/geoip.dat
 	wget -q -O build/x-ui/bin/geosite_RU.dat https://github.com/runetfreedom/russia-v2ray-rules-dat/releases/latest/download/geosite.dat
-	# 下载 OpenSSL 安装程序并放入 SSL 文件夹
 	mkdir -p build/x-ui/SSL
 	wget -q $(OPENSSL_URL) -O build/x-ui/SSL/Win64OpenSSL_Light-3_3_0.exe
 
