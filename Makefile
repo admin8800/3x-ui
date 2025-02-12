@@ -2,10 +2,10 @@
 
 GO_FILES := $(shell find . -type f -name '*.go')
 
-# 设置 Xray 的版本号
+# 设置 Xray 内核的版本号
 XRAY_VERSION := v25.1.1
 
-# 设置 Xray 下载地址
+# 设置 Xray 内核下载地址
 XRAY_URL := https://github.com/XTLS/Xray-core/releases/download/$(XRAY_VERSION)
 
 # 设置 OpenSSL 下载地址
