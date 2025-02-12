@@ -196,6 +196,23 @@ x-ui
 </details>
 
 
+## `windows`系统
+
+<details>
+  <summary>点击查看windows系统安装</summary>
+
+1. 下载`windows`系统压缩包
+2. 解压文件
+3. 双击运行`x-ui.exe`程序
+4. 使用默认信息登录面板
+
+
+
+</details>
+
+
+
+
 ## Nginx 设置
 <details>
   <summary>点击查看 反向代理配置</summary>
