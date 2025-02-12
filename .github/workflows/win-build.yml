@@ -1,0 +1,33 @@
+name: Build x-ui and upload artifacts
+
+on:
+  workflow_dispatch:  # 允许手动触发工作流
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # 选择构建环境，可以根据需要修改
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Go 1.23.5
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.23.5'
+
+      - name: 安装构建依赖
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y mingw-w64 wget unzip zip
+
+      - name: 构建 x-ui
+        run: |
+          # 使用自定义 Makefile 构建 x-ui
+          make all
+
+      - name: 上传构建产物
+        uses: actions/upload-artifact@v3
+        with:
+          name: x-ui-build
+          path: build/x-ui/x-ui-windows-amd64.zip  # 上传打包后的 x-ui zip 文件
