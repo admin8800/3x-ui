@@ -33,7 +33,10 @@
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/admin8800/3x-ui/main/install.sh)
 ```
-
+### 备用脚本
+```
+bash <(curl -Ls https://cdn.jsdelivr.net/gh/admin8800/3x-ui@main/install.sh)
+```
 
 ### 纯IPV6网络部署 
 <details>
