@@ -80,6 +80,29 @@ docker run -itd \
 
 然后使用默认信息访问面板
 
+
+### 容器里的命令
+查看面板信息
+```
+/app/x-ui setting -show true
+```
+修改用户名和密码
+```
+/app/x-ui setting -username 用户名 -password 密码
+```
+修改面板路径
+```
+/app/x-ui setting -webBasePath "admin"
+```
+修改面板端口
+```
+/app/x-ui setting -port 端口
+```
+修改后需要重启容器
+```
+docker restart 3x-ui
+```
+
 </details>
 
 ### SSL证书
@@ -195,6 +218,29 @@ x-ui
     docker stop 3x-ui
     docker rm 3x-ui
    ```
+
+### 容器里的命令
+查看面板信息
+```
+/app/x-ui setting -show true
+```
+修改用户名和密码
+```
+/app/x-ui setting -username 用户名 -password 密码
+```
+修改面板路径
+```
+/app/x-ui setting -webBasePath "admin"
+```
+修改面板端口
+```
+/app/x-ui setting -port 端口
+```
+修改后需要重启容器
+```
+docker restart 3x-ui
+```
+
 
 </details>
 
