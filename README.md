@@ -6,7 +6,7 @@
   </picture>
 </p>
 
-## 一个更好的面板 • 基于Xray Core构建 • 中文优化版更适合中文体质的宝宝
+## 一个更好的面板 • 基于Xray Core构建 • 中文优化版
 
 [![](https://img.shields.io/github/v/release/admin8800/3x-ui.svg)](https://github.com/admin8800/3x-ui/releases)
 [![](https://img.shields.io/github/actions/workflow/status/admin8800/3x-ui/release.yml.svg)](#)
@@ -594,36 +594,6 @@ XUI_BIN_FOLDER="bin" XUI_DB_FOLDER="/etc/x-ui" go build main.go
 
 </details>
 
-## 预览
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./media/01-overview-dark.png">
-  <img alt="3x-ui" src="./media/01-overview-light.png">
-</picture>
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./media/02-inbounds-dark.png">
-  <img alt="3x-ui" src="./media/02-inbounds-light.png">
-</picture>
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./media/03-add-inbound-dark.png">
-  <img alt="3x-ui" src="./media/03-add-inbound-light.png">
-</picture>
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./media/04-add-client-dark.png">
-  <img alt="3x-ui" src="./media/04-add-client-light.png">
-</picture>
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./media/05-settings-dark.png">
-  <img alt="3x-ui" src="./media/05-settings-light.png">
-</picture>
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./media/06-configs-dark.png">
-  <img alt="3x-ui" src="./media/06-configs-light.png">
-</picture>
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./media/07-bot-dark.png">
-  <img alt="3x-ui" src="./media/07-bot-light.png">
-</picture>
 
 ## 特别感谢
 
