@@ -311,7 +311,7 @@ check_config() {
     local existing_webBasePath=$(echo "$info" | grep -Eo '面板路径: .+' | awk '{print $2}')
     local existing_port=$(echo "$info" | grep -Eo '端口: .+' | awk '{print $2}')
     local existing_cert=$(/usr/local/x-ui/x-ui setting -getCert true | grep -Eo 'cert: .+' | awk '{print $2}')
-    local server_ip=$(curl -s https://api.ipify.org)
+    local server_ip=$(curl -s https://icanhazip.com)
 
     if [[ -n "$existing_cert" ]]; then
         local domain=$(basename "$(dirname "$existing_cert")")
@@ -1641,7 +1641,7 @@ remove_iplimit() {
 }
 
 SSH_port_forwarding() {
-    local server_ip=$(curl -s https://api.ipify.org)
+    local server_ip=$(curl -s https://icanhazip.com)
     local existing_webBasePath=$(/usr/local/x-ui/x-ui setting -show true | grep -Eo '面板路径: .+' | awk '{print $2}')
     local existing_port=$(/usr/local/x-ui/x-ui setting -show true | grep -Eo '端口: .+' | awk '{print $2}')
     local existing_listenIP=$(/usr/local/x-ui/x-ui setting -getListen true | grep -Eo 'listenIP: .+' | awk '{print $2}')
